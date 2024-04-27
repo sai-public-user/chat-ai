@@ -4,6 +4,7 @@ import {
   SettingsInputAntennaTwoTone,
 } from "@mui/icons-material";
 import {
+  Box,
   Divider,
   Drawer,
   Grid,
@@ -17,6 +18,7 @@ import {
   useTheme,
 } from "@mui/material";
 import React from "react";
+import ThemeToggle from "./ThemeToggle";
 
 const drawer = (
   <Grid
@@ -27,16 +29,28 @@ const drawer = (
     flex={1}
   >
     <Grid item>
-      <Toolbar display="flex" sx={{ gap: 2 }} alignItems="center">
-        <SettingsInputAntennaTwoTone sx={{ fontSize: 30 }} />
-        <Typography
-          variant="h6"
-          noWrap
-          component="div"
-          sx={{ display: { sm: "none", md: "block" } }}
-        >
-          Chat AI
-        </Typography>
+      <Toolbar
+        display="flex"
+        sx={{ gap: 2 }}
+        justifyContent="space-between"
+        alignItems="center"
+      >
+        <Box display="flex" sx={{ gap: 2 }}>
+          <SettingsInputAntennaTwoTone sx={{ fontSize: 30 }} />
+          <Typography
+            variant="h6"
+            noWrap
+            component="div"
+            sx={{ display: { sm: "none", md: "block" } }}
+          >
+            Chat AI
+          </Typography>
+        </Box>
+        <ThemeToggle
+          sx={{
+            display: { sm: "flex", md: "none" },
+          }}
+        />
       </Toolbar>
       <Divider />
       <List>
