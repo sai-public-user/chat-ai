@@ -1,27 +1,31 @@
 import "./App.css";
 import { useContext } from "react";
-import { Box, Stack, Switch, Typography, useTheme } from "@mui/material";
+import { Box, Stack, Switch } from "@mui/material";
 import { ThemeContext } from "./Contexts/Theme";
+import Layout from "./Components/Layout";
+import { DarkModeTwoTone, LightModeTwoTone } from "@mui/icons-material";
 
 function App() {
-  const theme = useTheme();
   const { mode, setMode } = useContext(ThemeContext);
-  console.log(theme);
   return (
-    <Box className="App" mx={{ background: theme.palette.background.default }}>
-      <Stack direction="row" spacing={1} alignItems="center">
-        <Typography mx={{ color: theme.palette.primary.main }}>Dark</Typography>
-        <Switch
-          checked={mode === "light"}
-          onChange={() =>
-            setMode((prev) => (prev === "light" ? "dark" : "light"))
-          }
-        />
-        <Typography mx={{ color: theme.palette.primary.main }}>
-          Light
-        </Typography>
-      </Stack>
-    </Box>
+    <Layout>
+      <Box className="App">
+        <Stack
+          direction="row"
+          alignItems="center"
+          mx={{ position: "fixed", top: "1rem", right: "2rem" }}
+        >
+          <LightModeTwoTone />
+          <Switch
+            checked={mode === "light"}
+            onChange={() =>
+              setMode((prev) => (prev === "light" ? "dark" : "light"))
+            }
+          />
+          <DarkModeTwoTone />
+        </Stack>
+      </Box>
+    </Layout>
   );
 }
 

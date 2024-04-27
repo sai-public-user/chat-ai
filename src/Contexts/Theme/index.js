@@ -1,5 +1,5 @@
 import { createContext, useMemo, useState } from "react";
-import { ThemeProvider, createTheme } from "@mui/material";
+import { ThemeProvider, createTheme, responsiveFontSizes } from "@mui/material";
 
 export const ThemeContext = createContext("light");
 
@@ -14,9 +14,10 @@ export default function ThemeWrapper({ children }) {
       }),
     [mode]
   );
+  const responsiveTheme = responsiveFontSizes(theme);
   return (
     <ThemeContext.Provider value={{ mode, setMode }}>
-      <ThemeProvider theme={theme}>{children}</ThemeProvider>
+      <ThemeProvider theme={responsiveTheme}>{children}</ThemeProvider>
     </ThemeContext.Provider>
   );
 }
