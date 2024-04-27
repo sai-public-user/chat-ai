@@ -93,27 +93,32 @@ export default function Sidebar({
           "& .MuiDrawer-paper": {
             boxSizing: "border-box",
             width: drawerWidth,
+            backgroundColor:
+              theme.palette.mode === "light"
+                ? theme.palette.grey[300]
+                : theme.palette.grey[900],
           },
           backgroundColor:
             theme.palette.mode === "light"
-              ? theme.palette.grey[100]
+              ? theme.palette.grey[300]
               : theme.palette.grey[900],
         }}
       >
         {drawer}
       </Drawer>
       <Drawer
+        elevation={16}
         variant="permanent"
         sx={{
           display: { xs: "none", sm: "block" },
           "& .MuiDrawer-paper": {
             boxSizing: "border-box",
             width: drawerWidth,
+            backgroundColor:
+              theme.palette.mode === "light"
+                ? theme.palette.grey[300]
+                : theme.palette.grey[900],
           },
-          backgroundColor:
-            theme.palette.mode === "light"
-              ? theme.palette.grey[100]
-              : theme.palette.grey[900],
         }}
         open
       >

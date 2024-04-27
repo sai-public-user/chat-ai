@@ -6,6 +6,7 @@ import {
   Menu,
   Toolbar,
   Typography,
+  useTheme,
 } from "@mui/material";
 import React from "react";
 import Sidebar, { drawerWidth } from "./Sidebar";
@@ -14,6 +15,7 @@ import { SettingsInputAntennaTwoTone } from "@mui/icons-material";
 export default function Layout({ children }) {
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [isClosing, setIsClosing] = React.useState(false);
+  const theme = useTheme();
 
   const handleDrawerClose = () => {
     setIsClosing(true);
@@ -39,6 +41,12 @@ export default function Layout({ children }) {
           width: { sm: `calc(100% - ${drawerWidth}px)` },
           ml: { sm: `${drawerWidth}px` },
           display: { sm: "block", md: "none" },
+          "& .MuiDrawer-paper": {
+            backgroundColor:
+              theme.palette.mode === "light"
+                ? theme.palette.grey[300]
+                : theme.palette.grey[900],
+          },
         }}
       >
         <Toolbar>
@@ -50,7 +58,14 @@ export default function Layout({ children }) {
           >
             <Menu />
           </IconButton>
-          <Typography variant="h5" noWrap component="div">
+          <Typography
+            variant="h5"
+            noWrap
+            component="div"
+            display="flex"
+            alignitems="center"
+            sx={{ gap: 2 }}
+          >
             <SettingsInputAntennaTwoTone sx={{ fontSize: 30 }} />
             Chat AI
           </Typography>
