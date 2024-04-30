@@ -18,7 +18,6 @@ import {
   useTheme,
 } from "@mui/material";
 import React from "react";
-import ThemeToggle from "./ThemeToggle";
 
 const drawer = (
   <Grid
@@ -46,11 +45,6 @@ const drawer = (
             Chat AI
           </Typography>
         </Box>
-        <ThemeToggle
-          sx={{
-            display: { sm: "flex", md: "none" },
-          }}
-        />
       </Toolbar>
       <Divider />
       <List>

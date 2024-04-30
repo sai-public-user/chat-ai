@@ -1,16 +1,17 @@
 import {
   AppBar,
+  Box,
   CssBaseline,
   Grid,
   IconButton,
-  Menu,
   Toolbar,
   Typography,
   useTheme,
 } from "@mui/material";
 import React from "react";
 import Sidebar, { drawerWidth } from "./Sidebar";
-import { SettingsInputAntennaTwoTone } from "@mui/icons-material";
+import { MenuTwoTone, SettingsInputAntennaTwoTone } from "@mui/icons-material";
+import ThemeToggle from "./ThemeToggle";
 
 export default function Layout({ children }) {
   const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -49,27 +50,36 @@ export default function Layout({ children }) {
           },
         }}
       >
-        <Toolbar>
-          <IconButton
-            color="inherit"
-            edge="start"
-            onClick={handleDrawerToggle}
-            sx={{ mr: 2 }}
-          >
-            <Menu />
-          </IconButton>
-          <Typography
-            variant="h5"
-            noWrap
-            component="div"
-            display="flex"
-            alignitems="center"
-            sx={{ gap: 2 }}
-          >
-            <SettingsInputAntennaTwoTone sx={{ fontSize: 30 }} />
-            Chat AI
-          </Typography>
-        </Toolbar>
+        <Box display="flex">
+          <Toolbar>
+            <IconButton
+              color="inherit"
+              edge="start"
+              onClick={handleDrawerToggle}
+              sx={{ mr: 2 }}
+            >
+              <MenuTwoTone />
+            </IconButton>
+            <Typography
+              variant="h5"
+              noWrap
+              component="div"
+              display="flex"
+              alignitems="center"
+              sx={{ gap: 2 }}
+            >
+              <SettingsInputAntennaTwoTone sx={{ fontSize: 30 }} />
+              Chat AI
+            </Typography>
+            <ThemeToggle
+              sx={{
+                position: "fixed",
+                top: "1rem",
+                right: "2rem",
+              }}
+            />
+          </Toolbar>
+        </Box>
       </AppBar>
       <Grid
         item
@@ -88,12 +98,21 @@ export default function Layout({ children }) {
       <Grid
         item
         component="main"
+        xs
         sx={{
           flexGrow: 1,
-          p: 3,
-          width: { sm: `calc(100% - ${drawerWidth}px)` },
+          px: 3,
+          //   width: { sm: `calc(100vw - ${drawerWidth}px)`, overflow: "auto" },
         }}
       >
+        <ThemeToggle
+          sx={{
+            position: "fixed",
+            top: "1rem",
+            right: "2rem",
+            display: { sm: "none", md: "flex" },
+          }}
+        />
         {children}
       </Grid>
     </Grid>
