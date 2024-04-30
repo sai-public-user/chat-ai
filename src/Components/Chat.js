@@ -1,5 +1,5 @@
 import { SendSharp } from "@mui/icons-material";
-import { Box, InputAdornment, TextField } from "@mui/material";
+import { Box, Grid, InputAdornment, TextField } from "@mui/material";
 import React, { useState } from "react";
 import { drawerWidth } from "./Sidebar";
 import moment from "moment";
@@ -20,13 +20,7 @@ export function ChatInput({ onSend }) {
     setMessage(e.target.value);
   };
   return (
-    <Box
-      position="absolute"
-      sx={{
-        bottom: "20px",
-        width: { sm: "100vw", md: `calc(100vw - ${drawerWidth}px - 3rem)` },
-      }}
-    >
+    <Grid item p={0} sx={{}}>
       <TextField
         label="Ask a Question"
         fullWidth
@@ -41,14 +35,14 @@ export function ChatInput({ onSend }) {
           ),
         }}
       />
-    </Box>
+    </Grid>
   );
 }
 
 export function ChatContainer({}) {
   return (
-    <Box sx={{ height: "calc(100% - 144px)", overflow: "auto" }} mt={4}>
-      {/* <>
+    <Grid item mt={3.5} mb={0.5} sx={{ overflow: "auto" }} xs>
+      <>
         "Skip to main content Stack Overflow About Products For Teams Search…
         Home Questions Tags Users Companies LABS Discussions COLLECTIVES
         Communities for your favorite technologies. Explore all Collectives
@@ -171,8 +165,8 @@ export function ChatContainer({}) {
         “Accept all cookies”, you agree Stack Exchange can store cookies on your
         device and disclose information in accordance with our Cookie Policy.
         Accept all cookies Necessary cookies only Customize settings"
-      </> */}
-    </Box>
+      </>
+    </Grid>
   );
 }
 
@@ -181,9 +175,15 @@ export default function Chat({}) {
   const [answers, setAnswers] = useState(new Map());
 
   return (
-    <Box position="relative" sx={{ height: "100%" }}>
+    <Grid
+      container
+      direction="column"
+      spacing={2}
+      ml={0}
+      sx={{ height: "100%", width: "100%" }}
+    >
       <ChatContainer />
       <ChatInput onSend={() => console.info("handle new queston")} />
-    </Box>
+    </Grid>
   );
 }

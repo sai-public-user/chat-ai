@@ -34,7 +34,7 @@ export default function Layout({ children }) {
   };
 
   return (
-    <Grid container spacing={2} m={0} sx={{ height: "100vh" }} maxWidth="sm">
+    <Grid container spacing={2} m={0} sx={{ height: "100vh", width: "100vw" }}>
       <CssBaseline />
       <AppBar
         position="fixed"
@@ -99,17 +99,19 @@ export default function Layout({ children }) {
         item
         component="main"
         xs
+        position="relative"
         sx={{
-          flexGrow: 1,
-          px: 3,
-          //   width: { sm: `calc(100vw - ${drawerWidth}px)`, overflow: "auto" },
+          height: "100%",
+          px: 2,
+          py: 0,
         }}
       >
         <ThemeToggle
           sx={{
-            position: "fixed",
-            top: "1rem",
-            right: "2rem",
+            position: "absolute",
+            top: "0rem",
+            right: "1rem",
+            zIndex: 999,
             display: { sm: "none", md: "flex" },
           }}
         />
