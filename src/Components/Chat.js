@@ -34,7 +34,7 @@ export function ChatInput({ onSend }) {
         onChange={handleChange}
         value={message}
         InputProps={{
-          startAdornment: (
+          endAdornment: (
             <InputAdornment position="start" onClick={sendMessage}>
               <SendSharp />
             </InputAdornment>
